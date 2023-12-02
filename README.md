@@ -4,7 +4,7 @@ En este repositorio comenzare un pequeño proyecto poniendo en practica lo apren
 El proyecto sera el siguiente:
 
 <p align="center">
-    <img width="450" height="300" src="img/microservice.png" />
+    <img width="650" height="400" src="img/microservice.png" />
 </p>
 
 Se administraran cinco microservicios:
