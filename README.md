@@ -14,4 +14,4 @@ Se administraran cinco microservicios:
 * Config Server: un servicio encargado de centralizar las configuraciones de cada servicio dentro del ecosistema.
 * Eureka: un servicio encargado de registrar otros servicios dentro de un mismo ecosistema.
 
-A medida el proyecto se valla desarrollando, se podran incluir o no otros patrones de arquitectura, ademas del gateway por ejemplo.
+A medida el proyecto se vaya desarrollando, se podran incluir o no otros patrones de arquitectura, ademas del gateway por ejemplo.
