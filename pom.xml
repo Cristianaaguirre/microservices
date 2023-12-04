@@ -15,6 +15,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>SpringMicroservices</name>
+    <modules>
+        <module>course</module>
+        <module>students</module>
+        <module>gateway</module>
+        <module>configuration</module>
+        <module>eureka-server</module>
+    </modules>
     <packaging>pom</packaging>
 
     <properties>
@@ -29,8 +36,24 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
+
 
     <build>
         <pluginManagement>
@@ -39,6 +62,11 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>3.1.4</version>
+                    <configuration>
+                        <image>
+                            <builder>paketobuildpacks/builder-jammy-base:latest</builder>
+                        </image>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
