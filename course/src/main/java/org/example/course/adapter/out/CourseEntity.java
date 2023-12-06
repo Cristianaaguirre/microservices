@@ -1,12 +1,15 @@
 package org.example.course.adapter.out;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
+@Data
+@Builder
 public class CourseEntity {
 
     @Id
@@ -14,35 +17,12 @@ public class CourseEntity {
     private Long id;
     private String name;
     private String professor;
+    @ElementCollection(targetClass = String.class)
+    @CollectionTable(
+            name = "students",
+            joinColumns = @JoinColumn(name = "student_id")
+    )
+    @Column(name = "student")
+    private List<String> students;
 
-    public CourseEntity() { }
-
-    public CourseEntity(String name, String professor) {
-        this.name = name;
-        this.professor = professor;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(String professor) {
-        this.professor = professor;
-    }
 }

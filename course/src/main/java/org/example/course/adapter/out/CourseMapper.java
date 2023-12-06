@@ -5,10 +5,19 @@ import org.example.course.domain.Course;
 public class CourseMapper {
 
     public static Course entityToDomain(CourseEntity entity) {
-        return new Course(entity.getId(), entity.getName(), entity.getProfessor());
+        return Course.builder()
+                .id(entity.getId())
+                .name(entity.getName())
+                .professor(entity.getProfessor())
+                .students(entity.getStudents())
+                .build();
     }
 
     public static CourseEntity domainToEntity(Course domain) {
-        return new CourseEntity(domain.getName(), domain.getProfessor());
+        return CourseEntity.builder()
+                .name(domain.getName())
+                .professor(domain.getProfessor())
+                .students(domain.getStudents())
+                .build();
     }
 }
