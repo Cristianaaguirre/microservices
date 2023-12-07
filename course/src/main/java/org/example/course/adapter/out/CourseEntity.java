@@ -6,9 +6,9 @@ import lombok.Data;
 
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "courses")
-@Data
 @Builder
 public class CourseEntity {
 
@@ -17,12 +17,12 @@ public class CourseEntity {
     private Long id;
     private String name;
     private String professor;
-    @ElementCollection(targetClass = String.class)
+    @ElementCollection(targetClass = Long.class)
     @CollectionTable(
             name = "students",
             joinColumns = @JoinColumn(name = "student_id")
     )
     @Column(name = "student")
-    private List<String> students;
+    private List<Long> students;
 
 }

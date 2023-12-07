@@ -10,3 +10,12 @@ spring:
       discovery:
         locator:
           enabled: true
+      routes:
+        - id: students
+          uri : http://localhost:9999
+          predicates:
+            - Path=/api/student/**
+        - id: courses
+          uri: http://localhost:9898
+          predicate:
+            - Path=/api/course/**

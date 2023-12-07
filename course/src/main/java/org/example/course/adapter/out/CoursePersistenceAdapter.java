@@ -6,13 +6,15 @@ import org.example.course.application.port.out.UpdateCoursePort;
 import org.example.course.domain.Course;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class CourseAdapter implements LoadCoursePort, UpdateCoursePort {
+public class CoursePersistenceAdapter implements LoadCoursePort, UpdateCoursePort {
 
-    private final CourseEntityRepository repository;
+    private final SpringCourseRepository repository;
 
     @Override
     public Course getCourse(Long id) {
@@ -20,6 +22,14 @@ public class CourseAdapter implements LoadCoursePort, UpdateCoursePort {
                 .of(repository.getReferenceById(id))
                 .map(CourseMapper::entityToDomain)
                 .orElseThrow();
+    }
+
+    @Override
+    public List<Course> getCourses() {
+        return repository.findAll()
+                .stream()
+                .map(CourseMapper::entityToDomain)
+                .collect(Collectors.toList());
     }
 
     @Override

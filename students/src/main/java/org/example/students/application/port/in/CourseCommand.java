@@ -1,10 +1,12 @@
 package org.example.students.application.port.in;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class AddCourseCommand {
+@Builder
+public class CourseCommand {
 
-    private String courseName;
+    private Long courseId;
     private Long studentId;
 }

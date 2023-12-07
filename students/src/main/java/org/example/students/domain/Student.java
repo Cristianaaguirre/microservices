@@ -1,6 +1,9 @@
 package org.example.students.domain;
 
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
+import jakarta.persistence.JoinColumn;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,16 +16,13 @@ public class Student {
 
     private Long id;
     private String name;
-    @ElementCollection
-    private List<String> courses;
+    private List<Long> courses;
 
-    public Student() {}
-
-    public void checkCourse(String name) {
-        if(courses.size() == 10 || courses.contains(name)) {
+    public void checkCourse(Long id) {
+        if(courses.size() == 10) {
             throw new RuntimeException("No se puede tener mas de 10 cursos");
         } else {
-            courses.add(name);
+            courses.add(id);
         }
     }
 

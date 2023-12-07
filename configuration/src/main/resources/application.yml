@@ -2,14 +2,13 @@ spring:
   profile:
     active: native
   application:
-    name: config-server
+    name: configserver
   cloud:
     config:
+      enabled: true
       server:
         git:
-          clone-on-start: true
-          default-label: master
-          uri: https://github.com/Cristianaaguirre/configuration
+          uri: /home/ubuntu/Escritorio/git-configurations/configuration
 
 server:
   port: 8888
