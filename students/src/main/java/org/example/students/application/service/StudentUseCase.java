@@ -17,13 +17,9 @@ public class StudentUseCase implements InputStudentPort {
     private final LoadStudentPort loadPort;
     private final UpdateStudentPort updatePort;
 
+
     @Override
-    public void addCourse(CourseCommand course) {
-
-        Student student = loadPort.getStudent(course.getStudentId());
-
-        student.checkCourse(course.getCourseId());
-
+    public void createStudent(Student student) {
         updatePort.saveStudent(student);
     }
 
@@ -37,5 +33,13 @@ public class StudentUseCase implements InputStudentPort {
         return loadPort.getStudents();
     }
 
+    @Override
+    public void addCourse(CourseCommand course) {
 
+        Student student = loadPort.getStudent(course.getStudentId());
+
+        student.checkCourse(course.getCourseId());
+
+        updatePort.saveStudent(student);
+    }
 }

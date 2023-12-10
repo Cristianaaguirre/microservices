@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface InputStudentPort {
 
+    void createStudent(Student student);
     Student getStudent(Long id);
     List<Student> getStudents();
     void addCourse(CourseCommand course);

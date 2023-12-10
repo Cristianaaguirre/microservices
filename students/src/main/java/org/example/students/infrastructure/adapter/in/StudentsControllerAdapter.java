@@ -1,8 +1,9 @@
-package org.example.students.adapter.in;
+package org.example.students.infrastructure.adapter.in;
 
 import lombok.RequiredArgsConstructor;
 import org.example.students.application.port.in.CourseCommand;
 import org.example.students.application.port.in.InputStudentPort;
+import org.example.students.domain.Student;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class StudentsControllerAdapter {
 
     private final InputStudentPort inputPort;
+
+    @PostMapping(path = "/create-student")
+    public ResponseEntity<?> createStudent(@RequestBody Student student) {
+        inputPort.createStudent(student);
+        return ResponseEntity.status(200).build();
+    }
 
     @GetMapping(path = "/get-student/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable Long id) {
@@ -23,14 +30,9 @@ public class StudentsControllerAdapter {
         return ResponseEntity.status(200).body(inputPort.getStudents());
     }
 
-    @PostMapping(path = "/add-course/{studentId}/{courseId}")
-    public ResponseEntity<?> addCourse(@PathVariable Long studentId, @PathVariable Long courseId) {
-        inputPort.addCourse(
-                CourseCommand.builder()
-                        .studentId(studentId)
-                        .courseId(courseId)
-                        .build()
-        );
+    @PostMapping(path = "/add-course/")
+    public ResponseEntity<?> addCourse(@RequestBody CourseCommand command) {
+        inputPort.addCourse(command);
         return ResponseEntity.status(200).build();
     }
 }

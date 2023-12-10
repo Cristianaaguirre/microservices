@@ -1,6 +1,7 @@
-package org.example.students.adapter.out;
+package org.example.students.infrastructure.adapter.out;
 
 import org.example.students.domain.Student;
+import org.example.students.infrastructure.entities.StudentEntity;
 
 public class StudentMapper {
 
@@ -14,9 +15,9 @@ public class StudentMapper {
 
     public static StudentEntity domainToEntity(Student domain) {
         return StudentEntity.builder()
-                .id(domain.getId())
                 .name(domain.getName())
                 .courses(domain.getCourses())
                 .build();
     }
+
 }

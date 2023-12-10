@@ -1,4 +1,4 @@
-package org.example.students.adapter.out;
+package org.example.students.infrastructure.entities;
 
 import jakarta.persistence.*;
 import lombok.Builder;
