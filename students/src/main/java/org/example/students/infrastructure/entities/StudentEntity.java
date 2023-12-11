@@ -1,15 +1,15 @@
 package org.example.students.infrastructure.entities;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "student")
 @Builder
+@Getter
+@Setter
 public class StudentEntity {
 
     @Id
@@ -23,4 +23,12 @@ public class StudentEntity {
     )
     @Column(name = "course")
     private List<Long> courses;
+
+    public StudentEntity() {}
+
+    public StudentEntity(Long id, String name, List<Long> courses) {
+        this.id = id;
+        this.name = name;
+        this.courses = courses;
+    }
 }

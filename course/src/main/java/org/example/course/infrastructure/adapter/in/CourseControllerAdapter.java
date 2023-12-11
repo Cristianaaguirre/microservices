@@ -1,13 +1,11 @@
-package org.example.course.adapter.in;
+package org.example.course.infrastructure.adapter.in;
 
 import lombok.RequiredArgsConstructor;
 import org.example.course.application.port.in.InputStudentPort;
 import org.example.course.application.port.in.StudentCommand;
+import org.example.course.domain.Course;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/course")
@@ -15,6 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class CourseControllerAdapter {
 
     private final InputStudentPort inputPort;
+
+    @PostMapping(path = "/create-course")
+    public ResponseEntity<?> createCourse(@RequestBody Course course) {
+        inputPort.addCourse(course);
+        return ResponseEntity.status(200).build();
+    }
 
     @GetMapping(path = "/get-course/{studentId}")
     public ResponseEntity<?> getCourse(@PathVariable Long studentId) {

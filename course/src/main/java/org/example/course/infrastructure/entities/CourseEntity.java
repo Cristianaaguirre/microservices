@@ -1,15 +1,18 @@
-package org.example.course.adapter.out;
+package org.example.course.infrastructure.entities;
 
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "courses")
 @Builder
+@Getter
+@Setter
 public class CourseEntity {
 
     @Id
@@ -25,4 +28,12 @@ public class CourseEntity {
     @Column(name = "student")
     private List<Long> students;
 
+    public CourseEntity() {}
+
+    public CourseEntity(Long id, String name, String professor, List<Long> students) {
+        this.id = id;
+        this.name = name;
+        this.professor = professor;
+        this.students = students;
+    }
 }

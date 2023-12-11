@@ -15,6 +15,7 @@ public class StudentMapper {
 
     public static StudentEntity domainToEntity(Student domain) {
         return StudentEntity.builder()
+                .id(domain.getId())
                 .name(domain.getName())
                 .courses(domain.getCourses())
                 .build();

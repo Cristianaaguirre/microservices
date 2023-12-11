@@ -30,7 +30,7 @@ public class StudentsControllerAdapter {
         return ResponseEntity.status(200).body(inputPort.getStudents());
     }
 
-    @PostMapping(path = "/add-course/")
+    @PostMapping(path = "/add-course")
     public ResponseEntity<?> addCourse(@RequestBody CourseCommand command) {
         inputPort.addCourse(command);
         return ResponseEntity.status(200).build();

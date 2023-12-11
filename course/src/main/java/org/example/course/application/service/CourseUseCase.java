@@ -18,6 +18,11 @@ public class CourseUseCase implements InputStudentPort {
     private final UpdateCoursePort updatePort;
 
     @Override
+    public void addCourse(Course course) {
+        updatePort.saveCourse(course);
+    }
+
+    @Override
     public void addStudent(StudentCommand intermediate) {
 
         Course course = loadPort.getCourse(intermediate.getCourseId());

@@ -1,9 +1,10 @@
-package org.example.course.adapter.out;
+package org.example.course.infrastructure.adapter.out;
 
 import lombok.RequiredArgsConstructor;
 import org.example.course.application.port.out.LoadCoursePort;
 import org.example.course.application.port.out.UpdateCoursePort;
 import org.example.course.domain.Course;
+import org.example.course.infrastructure.repositories.SpringCourseRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

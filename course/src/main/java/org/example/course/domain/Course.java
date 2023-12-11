@@ -14,6 +14,8 @@ public class Course {
     private String professor;
     private List<Long> students;
 
+    public Course() {}
+
     public void checkStudent(Long id) {
 
         if(students.size() == 20 || students.contains(id)) {
