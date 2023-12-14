@@ -6,6 +6,8 @@ import org.example.students.application.port.in.CourseCommand;
 import org.example.students.application.port.out.LoadStudentPort;
 import org.example.students.application.port.out.UpdateStudentPort;
 import org.example.students.domain.Student;
+import org.example.students.infrastructure.adapter.in.CourseFeignAdapter;
+import org.example.students.infrastructure.adapter.out.Course;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class StudentUseCase implements InputStudentPort {
 
     private final LoadStudentPort loadPort;
     private final UpdateStudentPort updatePort;
+    private final CourseFeignAdapter feignAdapter;
 
 
     @Override
@@ -36,6 +39,15 @@ public class StudentUseCase implements InputStudentPort {
     @Override
     public List<Student> getStudents(List<Long> ids) {
         return loadPort.getStudents(ids);
+    }
+
+    @Override
+    public List<Course> getCourses(Long id) {
+        Student student = loadPort.getStudent(id);
+
+        List<Long> coursesIds = student.getCourses();
+
+        return feignAdapter.getCoursesByIds(coursesIds);
     }
 
     @Override

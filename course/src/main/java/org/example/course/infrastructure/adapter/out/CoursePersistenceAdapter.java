@@ -34,6 +34,14 @@ public class  CoursePersistenceAdapter implements LoadCoursePort, UpdateCoursePo
     }
 
     @Override
+    public List<Course> getCourses(List<Long> ids) {
+        return repository.findAllById(ids)
+                .stream()
+                .map(CourseMapper::entityToDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void saveCourse(Course course) {
         repository.saveAndFlush(CourseMapper.domainToEntity(course));
     }

@@ -21,7 +21,9 @@ public class CourseUseCase implements InputCoursePort {
     private final StudentFeignAdapter feignAdapter;
 
     @Override
-    public void addCourse(Course course) { updatePort.saveCourse(course); }
+    public void addCourse(Course course) {
+        updatePort.saveCourse(course);
+    }
 
     @Override
     public void addStudent(StudentCommand intermediate) {
@@ -34,10 +36,19 @@ public class CourseUseCase implements InputCoursePort {
     }
 
     @Override
-    public Course getCourse(Long id) { return loadPort.getCourse(id); }
+    public Course getCourse(Long id) {
+        return loadPort.getCourse(id);
+    }
 
     @Override
-    public List<Course> getCourses() { return loadPort.getCourses(); }
+    public List<Course> getCourses() {
+        return loadPort.getCourses();
+    }
+
+    @Override
+    public List<Course> getCourses(List<Long> ids) {
+        return loadPort.getCourses(ids);
+    }
 
     @Override
     public List<Student> getStudents(Long id) {

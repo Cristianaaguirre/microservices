@@ -32,9 +32,14 @@ public class StudentsControllerAdapter {
         return ResponseEntity.status(200).body(inputPort.getStudents());
     }
 
-    @GetMapping
-    public ResponseEntity<?> getStudentsByIds(@RequestBody List<Long> studentsIds) {
-        return ResponseEntity.status(200).body(inputPort.getStudents(studentsIds));
+    @GetMapping(path = "/get-students-by-ids")
+    public ResponseEntity<?> getStudentsByIds(@RequestParam List<Long> ids) {
+        return ResponseEntity.status(200).body(inputPort.getStudents(ids));
+    }
+
+    @GetMapping(path = "/get-courses-by-id/{id}")
+    public ResponseEntity<?> getCoursesById(@PathVariable Long id) {
+        return ResponseEntity.status(200).body(inputPort.getCourses(id));
     }
 
     @PostMapping(path = "/add-course")

@@ -11,5 +11,6 @@ public interface InputCoursePort {
     void addStudent(StudentCommand intermediate);
     Course getCourse(Long id);
     List<Course> getCourses();
+    List<Course> getCourses(List<Long> ids);
     List<Student> getStudents(Long id);
 }

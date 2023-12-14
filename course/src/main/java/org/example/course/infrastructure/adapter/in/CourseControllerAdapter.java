@@ -7,6 +7,8 @@ import org.example.course.domain.Course;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/api/course")
 @RequiredArgsConstructor
@@ -30,7 +32,12 @@ public class CourseControllerAdapter {
         return ResponseEntity.status(200).body(inputPort.getCourses());
     }
 
-    @GetMapping(path = "/add-student/{courseId}/{studentId}")
+    @GetMapping(path = "/get-courses-by-ids")
+    public ResponseEntity<?> getCoursesByIds(@RequestParam List<Long> ids) {
+        return ResponseEntity.status(200).body(inputPort.getCourses(ids));
+    }
+
+    @PostMapping(path = "/add-student/{courseId}/{studentId}")
     public ResponseEntity<?> addStudent(@PathVariable Long courseId, @PathVariable Long studentId) {
         inputPort.addStudent(
             StudentCommand.builder()
@@ -41,7 +48,7 @@ public class CourseControllerAdapter {
         return ResponseEntity.status(200).build();
     }
 
-    @GetMapping
+    @GetMapping(path = "/get-student-by-id/{courseId}")
     public ResponseEntity<?> getStudentsById(@PathVariable Long courseId) {
         return ResponseEntity.status(200).body(inputPort.getStudents(courseId));
     }

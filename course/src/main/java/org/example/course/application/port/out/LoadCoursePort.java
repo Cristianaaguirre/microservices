@@ -8,4 +8,5 @@ public interface LoadCoursePort {
 
     Course getCourse(Long id);
     List<Course> getCourses();
+    List<Course> getCourses(List<Long> ids);
 }
