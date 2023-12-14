@@ -34,6 +34,14 @@ public class StudentPersistenceAdapter implements LoadStudentPort, UpdateStudent
     }
 
     @Override
+    public List<Student> getStudents(List<Long> ids) {
+        return repository.findAllById(ids)
+                .stream()
+                .map(StudentMapper::entityToDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void saveStudent(Student student) {
         repository.save(StudentMapper.domainToEntity(student));
     }

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class CoursePersistenceAdapter implements LoadCoursePort, UpdateCoursePort {
+public class  CoursePersistenceAdapter implements LoadCoursePort, UpdateCoursePort {
 
     private final SpringCourseRepository repository;
 

@@ -1,7 +1,7 @@
 package org.example.course.infrastructure.adapter.in;
 
 import lombok.RequiredArgsConstructor;
-import org.example.course.application.port.in.InputStudentPort;
+import org.example.course.application.port.in.InputCoursePort;
 import org.example.course.application.port.in.StudentCommand;
 import org.example.course.domain.Course;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CourseControllerAdapter {
 
-    private final InputStudentPort inputPort;
+    private final InputCoursePort inputPort;
 
     @PostMapping(path = "/create-course")
     public ResponseEntity<?> createCourse(@RequestBody Course course) {
@@ -30,7 +30,6 @@ public class CourseControllerAdapter {
         return ResponseEntity.status(200).body(inputPort.getCourses());
     }
 
-
     @GetMapping(path = "/add-student/{courseId}/{studentId}")
     public ResponseEntity<?> addStudent(@PathVariable Long courseId, @PathVariable Long studentId) {
         inputPort.addStudent(
@@ -40,5 +39,10 @@ public class CourseControllerAdapter {
                     .build()
         );
         return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getStudentsById(@PathVariable Long courseId) {
+        return ResponseEntity.status(200).body(inputPort.getStudents(courseId));
     }
 }

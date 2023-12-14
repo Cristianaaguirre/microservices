@@ -9,5 +9,6 @@ public interface InputStudentPort {
     void createStudent(Student student);
     Student getStudent(Long id);
     List<Student> getStudents();
+    List<Student> getStudents(List<Long> ids);
     void addCourse(CourseCommand course);
 }

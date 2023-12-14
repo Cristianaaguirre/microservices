@@ -34,6 +34,11 @@ public class StudentUseCase implements InputStudentPort {
     }
 
     @Override
+    public List<Student> getStudents(List<Long> ids) {
+        return loadPort.getStudents(ids);
+    }
+
+    @Override
     public void addCourse(CourseCommand course) {
 
         Student student = loadPort.getStudent(course.getStudentId());

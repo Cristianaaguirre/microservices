@@ -8,4 +8,5 @@ public interface LoadStudentPort {
 
     Student getStudent(Long id);
     List<Student> getStudents();
+    List<Student> getStudents(List<Long> ids);
 }

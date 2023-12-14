@@ -1,13 +1,15 @@
 package org.example.course.application.port.in;
 
 import org.example.course.domain.Course;
+import org.example.course.infrastructure.adapter.out.Student;
 
 import java.util.List;
 
-public interface InputStudentPort {
+public interface InputCoursePort {
 
     void addCourse(Course course);
     void addStudent(StudentCommand intermediate);
     Course getCourse(Long id);
     List<Course> getCourses();
+    List<Student> getStudents(Long id);
 }
